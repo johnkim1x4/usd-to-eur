@@ -102,10 +102,13 @@
 	      $infoUl.append($changeLi);
 	      $boxLi.append($infoUl);
 	      $("ul#rate-history").append($boxLi);
+	
+	      $("#rate-history-more").prop("disabled", false);
 	    }
 	  }
 	
 	  $("#rate-history-more").on("click", function (e) {
+	    $("#rate-history-more").prop("disabled", true);
 	    show += 5;
 	    getHistory(rates[rates.length - 1].date);
 	  });
