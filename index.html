@@ -8,21 +8,22 @@
   <body>
     <div class="container">
       <div class="row">
-        <h1>USD to EUR Converter</h1>
+        <h1 class="title">USD to EUR Converter</h1>
       </div>
       <div class="row">
-        <div class="col-3">
+        <div class="col-6">
           <h3>History</h3>
           <ul id="rate-history"></ul>
           <button id="rate-history-more">Show More</button>
         </div>
-        <div class="col-9">
+        <div class="col-6">
           <h3>Enter USD to convert to EUR:</h3>
-          <form id="converter">
+          <form id="converter" class="clearfix">
+            <span>$</span>
             <input type="text">
-            <input type="submit">
+            <input type="submit" value="Convert">
           </form>
-          <ul id="input-history"></ul>
+          <ul id="convert-history"></ul>
         </div>
       </div>
     </div>

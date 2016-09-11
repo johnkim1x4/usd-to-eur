@@ -1,3 +1,62 @@
 .container {
   margin: 0 auto;
+  max-width: 960px;
+}
+
+.col-6 {
+  width: 50%;
+  float: left;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+h1.title {
+  text-align: center;
+}
+
+#converter {
+  position: relative;
+  border: 1px solid gray;
+  height: 60px;
+  border-radius: 5px;
+  input:focus {
+    outline: none;
+  }
+  span {
+    float: left;
+    width: 10%;
+    text-align: center;
+    height: 60px;
+    font-size: 1.6em;
+    padding: 15px 0;
+  }
+  input[type="text"] {
+    width: 70%;
+    float: left;
+    border: 0;
+    height: 60px;
+    font-size: 1.6em;
+  }
+  input[type="submit"] {
+    width: 20%;
+    float: right;
+    border: 0;
+    padding: 10px 0;
+    height: 60px;
+    border-radius: 0 5px 5px 0;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+#convert-history {
+  clear: both;
 }
