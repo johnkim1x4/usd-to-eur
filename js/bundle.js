@@ -123,10 +123,11 @@
 	    e.preventDefault();
 	    var $historyLi = $("<li></li>");
 	    var $inputEl = $("#converter input[type='text']");
-	    var userInput = parseFloat($inputEl.val());
+	    var userInput = $inputEl.val();
 	    $inputEl.val("");
 	
 	    if (!isNaN(userInput)) {
+	      userInput = parseFloat(userInput);
 	      var result = userInput * currentRate;
 	      $historyLi.text(userInput.toFixed(2) + " USD => " + result.toFixed(2) + " EUR");
 	      $("#convert-history").prepend($historyLi);
