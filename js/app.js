@@ -78,11 +78,17 @@ $( () => {
     var $historyLi = $("<li></li>");
     var $inputEl = $("#converter input[type='text']");
     var userInput = $inputEl.val();
+    var $error;
     $inputEl.val("");
 
     if (userInput!=="" && !isNaN(userInput)) {
       $("#errors").children().remove();
       userInput = parseFloat(userInput);
+      if (userInput < 0) {
+        $error = $("<li>Please enter a positive USD amonut.</li>");
+        $("#errors").append($error);
+        return;
+      }
       var result = userInput * currentRate;
       $historyLi.html(userInput.toFixed(2) + " USD <i class='fa fa-arrow-right'></i> " + result.toFixed(2) + " EUR");
       $historyLi.addClass("box");
@@ -90,7 +96,7 @@ $( () => {
       $("#convert-history").prepend($historyLi);
     } else {
       $("#errors").children().remove();
-      var $error = $("<li>Please enter a valid number.</li>");
+      $error = $("<li>Please enter a valid number.</li>");
       $("#errors").append($error);
     }
   });
