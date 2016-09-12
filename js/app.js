@@ -68,6 +68,7 @@ $( () => {
       $boxLi.append($infoUl);
       $("ul#rate-history").append($boxLi);
 
+      $(".loader").remove();
       $moreBtn.text("Show More");
       $moreBtn.prop("disabled",false);
     }
@@ -104,6 +105,7 @@ $( () => {
   $moreBtn.on("click", (e) => {
     $moreBtn.prop("disabled",true);
     $moreBtn.text("Loading...");
+    $(".loader").show();
     show += 5;
     getHistory(rates[rates.length-1].date);
   });
