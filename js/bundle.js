@@ -55,6 +55,8 @@
 	  var $moreBtn = $("#rate-history-more");
 	  var $form = $("#converter");
 	
+	  $("#converter input[type='text']").focus();
+	
 	  (function getToday() {
 	    $.get({
 	      url: "http://api.fixer.io/latest?base=USD",
@@ -88,16 +90,16 @@
 	      if (i === 0) {
 	        $boxLi.addClass("box highlight");
 	      } else {
-	        $boxLi.addClass("box");
+	        $boxLi.addClass("box normal");
 	      }
 	      var date = rates[i].date;
-	      $boxLi.text(date);
+	      $boxLi.html("<span class='rate-date'>" + date + "</span>");
 	
 	      var $infoUl = $("<ul></ul>");
 	
 	      var $rateLi = $("<li></li>");
 	      $rateLi.addClass("rate-conversion");
-	      $rateLi.text("1USD = " + rates[i].rate + "EUR");
+	      $rateLi.text("1 USD = " + rates[i].rate + " EUR");
 	
 	      var $changeLi = $("<li></li>");
 	      var diff = rates[i].rate - rates[i + 1].rate;
@@ -126,17 +128,24 @@
 	    var userInput = $inputEl.val();
 	    $inputEl.val("");
 	
-	    if (!isNaN(userInput)) {
+	    if (userInput !== "" && !isNaN(userInput)) {
+	      $("#errors").children().remove();
 	      userInput = parseFloat(userInput);
 	      var result = userInput * currentRate;
-	      $historyLi.text(userInput.toFixed(2) + " USD => " + result.toFixed(2) + " EUR");
+	      $historyLi.html(userInput.toFixed(2) + " USD <i class='fa fa-arrow-right'></i> " + result.toFixed(2) + " EUR");
+	      $historyLi.addClass("box");
+	      $historyLi.hide().fadeIn(800);
 	      $("#convert-history").prepend($historyLi);
+	    } else {
+	      $("#errors").children().remove();
+	      var $error = $("<li>Please enter a valid number.</li>");
+	      $("#errors").append($error);
 	    }
 	  });
 	
 	  $moreBtn.on("click", function (e) {
 	    $moreBtn.prop("disabled", true);
-	    $moreBtn.text("Loading");
+	    $moreBtn.text("Loading...");
 	    show += 5;
 	    getHistory(rates[rates.length - 1].date);
 	  });

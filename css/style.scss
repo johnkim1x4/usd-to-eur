@@ -1,3 +1,21 @@
+$text-color: #444;
+$primary-color: #abcff0;
+$bg-color: lighten(#606c88, 15%);
+$bg-color-2: darken(#606c88, 10%);
+
+body {
+  font-family: 'Exo', sans-serif;
+  color: $text-color;
+  background: #606c88; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #606c88 , #3f4c6b); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #606c88 , #3f4c6b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+input, button {
+  font-family: 'Exo', sans-serif;
+  color: $text-color;
+}
+
 .container {
   margin: 0 auto;
   max-width: 960px;
@@ -6,6 +24,8 @@
 .col-6 {
   width: 50%;
   float: left;
+  padding: 10px;
+  box-sizing: border-box;
   @media screen and (max-width: 600px) {
     width: 100%;
   }
@@ -18,14 +38,80 @@
 }
 
 h1.title {
+  color: #fff;
+  font-weight: 100;
+  font-size: 3em;
   text-align: center;
+  padding-top: 20px;
+}
+
+h4 {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 400;
+  color: $primary-color;
+}
+
+#rate-history {
+  list-style: none;
+  padding: 0;
+  &+button {
+    width: 100%;
+    border: 0;
+    background-color: lighten($bg-color,40%);
+    height: 30px;
+    cursor: pointer;
+    color: $text-color;
+    transition: 0.6s;
+    text-transform: uppercase;
+    font-weight: 700;
+    &:hover {
+      background-color: lighten($bg-color,20%);
+      transition: 0.6s;
+    }
+  }
+  .rate-conversion {
+    font-size: 1.4em;
+    display: inline-block;
+    letter-spacing: 1px;
+  }
+  .rate-change {
+    font-size: 0.7em;
+    font-weight: 700;
+    background-color: $bg-color-2;
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    margin-left: 10px;
+    position: relative;
+    top: 4px;
+    float: right;
+    &.neg {
+      color: #f0abbe;
+      &:before {
+        font-family: 'FontAwesome';
+        content: "\f0d7";
+        display: inline-block;
+        padding-right: 5px;
+      }
+    }
+    &.pos {
+      color: #baf0ab;
+      &:before {
+        font-family: 'FontAwesome';
+        content: "\f0d8";
+        display: inline-block;
+        padding-right: 5px;
+      }
+    }
+  }
 }
 
 #converter {
   position: relative;
   border: 1px solid gray;
   height: 60px;
-  border-radius: 5px;
   input:focus {
     outline: none;
   }
@@ -35,7 +121,9 @@ h1.title {
     text-align: center;
     height: 60px;
     font-size: 1.6em;
-    padding: 15px 0;
+    background-color: #fff;
+    line-height: 2.4em;
+    color: $bg-color;
   }
   input[type="text"] {
     width: 70%;
@@ -45,18 +133,94 @@ h1.title {
     font-size: 1.6em;
   }
   input[type="submit"] {
+    font-weight: 700;
     width: 20%;
     float: right;
     border: 0;
     padding: 10px 0;
     height: 60px;
-    border-radius: 0 5px 5px 0;
+    background-color: $primary-color;
+    color: $text-color;
+    cursor: pointer;
+    transition: 0.4s;
     &:hover {
-      opacity: 0.8;
+      background-color: darken($primary-color, 10%);
+      transition: 0.4s;
     }
   }
 }
 
 #convert-history {
   clear: both;
+  list-style: none;
+  padding: 0;
+  i.fa {
+    font-size: 0.8em;
+    position: relative;
+    bottom: 2px;
+  }
+  .box {
+    background-color: #ddd;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-left: 5px solid $primary-color;
+  }
+}
+
+li.box {
+  padding: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  .rate-date {
+    float: right;
+    font-size: 0.8em;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  ul {
+    clear: both;
+    list-style: none;
+    padding: 0;
+  }
+}
+
+.normal {
+  background-color: $bg-color;
+  text-shadow: 0 0 10px rgba(0,0,0,0.3);
+  transition: 0.4s;
+  &:hover {
+    transition: 0.4s;
+    background-color: lighten($bg-color, 10%);
+  }
+  .rate-date {
+    color: #ddd;
+  }
+  ul {
+    color: #fff;
+  }
+}
+
+.highlight {
+  background-color: $primary-color;
+  font-weight: 700;
+  transition: 0.4s;
+  &:hover {
+    background-color: darken($primary-color, 10%);
+    transition: 0.4s;
+  }
+}
+
+#errors {
+  list-style: none;
+  padding: 0;
+  li {
+    background-color: $bg-color-2;
+    color: #f0abbe;
+    text-transform: uppercase;
+    padding: 10px;
+    font-size: 0.7em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-left: 5px solid #f0abbe;
+  }
 }

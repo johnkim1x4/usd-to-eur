@@ -1,9 +1,11 @@
 <html>
   <head>
     <title>USD to EUR</title>
+    <link href="https://fonts.googleapis.com/css?family=Exo:100,400,700" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script type="text/javascript" src="js/bundle.js" ></script>
+    <script src="https://use.fontawesome.com/a307580c2c.js"></script>
   </head>
   <body>
     <div class="container">
@@ -12,17 +14,18 @@
       </div>
       <div class="row">
         <div class="col-6">
-          <h3>History</h3>
+          <h4>History</h4>
           <ul id="rate-history"></ul>
-          <button id="rate-history-more">Show More</button>
+          <button id="rate-history-more" value="SHOW MORE">SHOW MORE</button>
         </div>
         <div class="col-6">
-          <h3>Enter USD to convert to EUR:</h3>
+          <h4>Enter USD to convert to EUR:</h4>
           <form id="converter" class="clearfix">
             <span>$</span>
             <input type="text">
-            <input type="submit" value="Convert">
+            <input type="submit" value="CONVERT">
           </form>
+          <ul id="errors"></ul>
           <ul id="convert-history"></ul>
         </div>
       </div>
