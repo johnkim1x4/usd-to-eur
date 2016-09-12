@@ -116,7 +116,7 @@
 	      $boxLi.append($infoUl);
 	      $("ul#rate-history").append($boxLi);
 	
-	      $(".loader").remove();
+	      $(".loader").hide();
 	      $moreBtn.text("Show More");
 	      $moreBtn.prop("disabled", false);
 	    }
